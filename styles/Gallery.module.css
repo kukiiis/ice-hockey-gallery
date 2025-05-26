@@ -1,0 +1,161 @@
+/* Add to styles/Galleries.module.css */
+.galleryDescription {
+  font-size: 0.95rem;
+  color: #b0c4de; /* Lighter text for description */
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  display: -webkit-box; /* For multi-line ellipsis */
+  -webkit-line-clamp: 3; /* Show up to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(10, 37, 64, 0.85);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(30,144,255,0.15);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  color: #1e90ff;
+  text-shadow: 0 2px 8px #0a2540;
+  letter-spacing: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.title::before {
+  content: url('https://cdn-icons-png.flaticon.com/512/69/69524.png');
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  filter: drop-shadow(0 0 6px #1e90ff);
+}
+
+.loading {
+  text-align: center;
+  margin-top: 3rem;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.noPhotos {
+  text-align: center;
+  margin: 3rem 0;
+  font-size: 1.2rem;
+  color: #eaf6fb;
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.photoCard {
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 16px rgba(30,144,255,0.10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeIn 0.8s;
+}
+
+.photoCard:hover {
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 0 8px 32px rgba(255,46,99,0.15);
+  background: rgba(30,144,255,0.12);
+}
+
+.photo {
+  max-width: 100%;
+  max-height: 260px;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px #0a2540;
+  transition: box-shadow 0.2s;
+}
+
+.photoName {
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+  word-break: break-all;
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+}
+.photoWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  background: rgba(30, 144, 255, 0.75);
+  transition: opacity 0.3s;
+  border-radius: 8px;
+  gap: 0.5rem;
+}
+
+.photoWrapper:hover .overlay {
+  opacity: 1;
+}
+
+.cartButton {
+  background: #fff;
+  color: #1e90ff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  margin: 0.2rem 0;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(30,144,255,0.15);
+  transition: background 0.2s, color 0.2s;
+}
+
+.cartButton:hover {
+  background: #1e90ff;
+  color: #fff;
+}
+
+.message {
+  text-align: center;
+  margin: 1rem 0;
+  color: #fff;
+  background: #1e90ff;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(30,144,255,0.15);
+}

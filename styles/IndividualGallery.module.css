@@ -1,0 +1,289 @@
+/* styles/IndividualGallery.module.css */
+
+.pageContainer {
+  padding-top: 90px; /* Adjust this based on your actual header height + some space */
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 90px); /* Adjust 90px if padding-top changes */
+  /* background-color: var(--background-dark-navy); /* Ensure readability over global background */
+}
+
+.galleryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 15px; /* Space between title and link if they wrap */
+}
+
+/* In IndividualGallery.module.css */
+.galleryTitle {
+  font-size: 2.5rem; /* Match Galleries.module.css pageTitle */
+  color: #94a3b8; /* Match Galleries.module.css pageTitle */
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.backLink {
+  font-size: 1rem;
+  color: #94a3b8; /* Match Galleries.module.css pageTitle */
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: 1px solid #94a3b8; /* Match Galleries.module.css pageTitle */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.backLink:hover {
+  background-color: #94a3b8;
+  color: var(--background-dark-navy);
+}
+/* 
+  <<<<< IMPORTANT FOR HOUSE ICON REMOVAL >>>>>
+  If you had a specific class for an icon, e.g., .backIcon or .titleIcon,
+  or if .galleryTitle::before or .backLink::before was used for the house icon,
+  DELETE or COMMENT OUT those specific rules.
+
+  For example, if you had:
+  .galleryTitle::before {
+    content: '🏠'; // Or an SVG, or background-image
+    // ... other styles
+  }
+  You would delete or comment out this entire block.
+*/
+
+
+/* Styles for photo grid and cards will be updated below */
+.photoGrid {
+  display: grid;
+  /* We will make photos bigger, so adjust columns */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Increased minmax */
+  gap: 2rem; /* Increased gap */
+}
+
+.photoCard {
+  background-color: rgba(10, 37, 64, 0.6); /* Slightly more transparent */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba(30, 144, 255, 0.15);
+}
+
+.photoCard:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(30, 144, 255, 0.25);
+}
+
+.photoImage {
+  width: 100%;
+  /* Adjust height for bigger display, or use aspect-ratio */
+  height: 220px; /* Increased height */
+  object-fit: cover; /* 'cover' is usually good, 'contain' if aspect ratio is critical */
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.photoCard:hover .photoImage {
+  opacity: 0.85;
+}
+
+.photoInfoAndActions {
+  padding: 12px 15px; /* Slightly adjusted padding */
+  text-align: center;
+  background-color: rgba(10, 25, 47, 0.5); /* Dark Navy Blue with some transparency, or use a solid color like #1E3A5F */
+  border-top: 1px solid rgba(100, 255, 218, 0.2); /* Subtle aqua border */
+}
+
+.photoName {
+  margin-top: 0;
+  margin-bottom: 12px; /* Increased space below name */
+  font-weight: 600; /* Slightly bolder */
+  font-size: 0.95rem;
+  color: #CCD6F6; /* Light Slate Blue for text */
+}
+
+.actionsContainer {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 10px; /* Space between buttons */
+  margin-top: 8px;
+}
+
+.actionButton {
+  display: block; /* Make buttons take full width of their container */
+  width: 100%;
+  background-color: #64FFDA; /* Aqua accent color for button background */
+  color: #0A192F; /* Dark Navy Blue for button text for high contrast */
+  border: none;
+  padding: 12px 15px; /* Increased padding for a more substantial feel */
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600; /* Bolder text on button */
+  border-radius: 5px; /* Slightly more rounded corners */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.actionButton:hover {
+  background-color: #52D8C8; /* Slightly darker/muted aqua on hover */
+  transform: translateY(-1px); /* Slight lift effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.actionButton:active {
+  transform: translateY(0px); /* Button press effect */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.actionButton:focus-visible { /* For keyboard navigation accessibility */
+  outline: 2px solid #64FFDA;
+  outline-offset: 2px;
+}
+
+/* If you have a disabled state (though current code doesn't explicitly disable them based on a condition other than price not existing for digital) */
+.actionButton:disabled {
+  background-color: #1E3A5F; /* Medium Navy Blue for disabled state */
+  color: #CCD6F6; /* Light Slate Blue for text */
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.photoName {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Styles for the Modal (Lightbox) */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85); /* Darker overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure it's on top */
+  padding: 20px;
+  cursor: pointer; /* To indicate it can be clicked to close */
+}
+
+.modalContent {
+  position: relative;
+  background-color: #182838; /* Dark background for the modal box itself */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  max-width: 90vw; /* Max width relative to viewport width */
+  max-height: 90vh; /* Max height relative to viewport height */
+  display: flex; /* To help center image if it's smaller than max dimensions */
+  align-items: center;
+  justify-content: center;
+  cursor: default; /* Reset cursor for the content area */
+}
+
+.modalImage {
+  max-width: 100%;
+  max-height: 100%; /* Image will scale down to fit modalContent */
+  display: block; /* Remove extra space below image */
+  border-radius: 4px; /* Optional: slight rounding of image corners */
+}
+
+.closeButton {
+  position: absolute;
+  top: -15px; /* Position outside the modal content slightly */
+  right: -15px;
+  background: #e0e0e0;
+  color: #1e1e1e;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.closeButton:hover {
+  background-color: #ffffff;
+  transform: scale(1.1);
+}
+
+.loadingSpinner, .errorMessage {
+  /* Basic styling, can be enhanced */
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+/* Add these styles to your existing IndividualGallery.module.css */
+
+.photoWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.watermarkOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* allows clicks to pass through to the image */
+  z-index: 2;
+}
+
+.watermark {
+  max-width: 50%;
+  max-height: 50%;
+  opacity: 0.5; /* adjust transparency as needed */
+}
+
+.imageContainer {
+  position: relative;
+  overflow: hidden;
+  height: 220px; /* Match your existing photo height */
+}
+
+.modalImageContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Adjust the modal watermark to be more visible */
+.modalContent .watermarkOverlay {
+  z-index: 1001;
+}
+
+.modalContent .watermark {
+  max-width: 80%;
+  max-height: 80%;
+  opacity: 0.7;
+}

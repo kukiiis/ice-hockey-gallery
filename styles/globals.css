@@ -1,0 +1,236 @@
+/* styles/globals.css */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(
+      to bottom,
+      #1E3A5F 0px,         /* Header blue */
+      #1E3A5F 70px,        /* Header height */
+      rgba(30,58,95,0.85) 120px, /* Gradually fade */
+      rgba(30,58,95,0.5) 220px,
+      rgba(30,58,95,0.15) 350px,
+      transparent 500px
+    ),
+    url('/images/ice-rink-background.jpg') center center / cover no-repeat fixed;
+  color: var(--text-light-slate);
+}
+
+body::before {
+  content: "";
+  display: none; /* Remove the old overlay, handled by gradient now */
+}
+
+body::before {
+  content: "";
+  display: none; /* Remove the old overlay, handled by gradient now */
+}
+
+body::before {
+  content: "";
+  display: none; /* Remove the old overlay, handled by gradient now */
+}
+
+/* ... (rest of your globals.css, like *, a, h1-h6, buttons, inputs, etc.) ... */
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inheriit; /* Brighter blue for links */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+  color: #79c0ff; /* Lighter blue on hover */
+  text-shadow: 0 0 5px rgba(79, 168, 255, 0.5);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  margin-top: 0;
+  margin-bottom: 0.75em; /* Consistent spacing */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+h1 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 1em;}
+h2 { font-size: 2.2rem; line-height: 1.25; }
+h3 { font-size: 1.8rem; line-height: 1.3; }
+
+/* Themed Buttons */
+.themedButton,
+button { /* Apply to generic buttons too, but prefer .themedButton class */
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffffff;
+  background: linear-gradient(145deg, #1e90ff, #005cbf); /* Blue gradient */
+  border: none;
+  border-radius: 8px;
+  padding: 0.8em 1.8em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 107, 223, 0.3), inset 0 -2px 0 rgba(0,0,0,0.15);
+  display: inline-block;
+  text-align: center;
+}
+
+.themedButton:hover,
+button:hover {
+  background: linear-gradient(145deg, #4fa8ff, #1e90ff);
+  box-shadow: 0 6px 20px rgba(0, 107, 223, 0.4), inset 0 -2px 0 rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.themedButton:active,
+button:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 10px rgba(0, 107, 223, 0.3), inset 0 -1px 0 rgba(0,0,0,0.15);
+}
+
+.themedButton-danger { /* For delete/remove buttons */
+  background: linear-gradient(145deg, #ff4d4d, #cc0000);
+  box-shadow: 0 4px 15px rgba(204, 0, 0, 0.3), inset 0 -2px 0 rgba(0,0,0,0.15);
+}
+.themedButton-danger:hover {
+  background: linear-gradient(145deg, #ff6666, #ff4d4d);
+  box-shadow: 0 6px 20px rgba(204, 0, 0, 0.4), inset 0 -2px 0 rgba(0,0,0,0.1);
+}
+
+.themedButton:disabled,
+button:disabled {
+  background: #526070; /* Muted color for disabled */
+  color: #9eb0c4;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Themed Input Fields */
+.themedInput,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: #eaf6fb; /* Text color inside input */
+  background-color: rgba(10, 37, 64, 0.7); /* Dark, slightly transparent */
+  border: 2px solid #1e5a99; /* Darker blue border */
+  border-radius: 8px;
+  padding: 0.8em 1em;
+  margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  outline: none;
+}
+
+.themedInput::placeholder,
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="number"]::placeholder,
+textarea::placeholder {
+  color: #7c98b3; /* Muted placeholder text */
+  opacity: 1;
+}
+
+.themedInput:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  border-color: #4fa8ff; /* Brighter blue on focus */
+  background-color: rgba(10, 37, 64, 0.9);
+  box-shadow: 0 0 10px rgba(79, 168, 255, 0.3);
+}
+
+/* General Page Container for consistent padding and max-width */
+.pageContainer {
+  width: 90%;
+  max-width: 1200px; /* Adjust as needed */
+  margin: 0 auto; /* Centering */
+  padding: 2rem 1rem; /* Padding top/bottom and left/right */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #020d1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #1e5a99; /* Darker blue scrollbar thumb */
+  border-radius: 10px;
+  border: 3px solid #020d1a; /* Creates padding around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #4fa8ff; /* Brighter blue on hover */
+}
+
+/* Utility class for messages/alerts */
+.appMessage {
+  padding: 1em 1.5em;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  max-width: 600px;
+}
+.appMessage-success {
+  background-color: rgba(29, 185, 84, 0.2); /* Greenish for success */
+  color: #6bff9f;
+  border: 1px solid #1db954;
+}
+.appMessage-error {
+  background-color: rgba(255, 46, 99, 0.2); /* Reddish for error */
+  color: #ff8fab;
+  border: 1px solid #ff2e63;
+}
+.appMessage-info {
+  background-color: rgba(30, 144, 255, 0.2); /* Bluish for info */
+  color: #87cefa;
+  border: 1px solid #1e90ff;
+}
+
+/* Loading Spinner (simple) */
+.loadingSpinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  font-size: 1.5rem;
+  color: #4fa8ff;
+}
+.loadingSpinner::before {
+  content: '';
+  width: 40px;
+  height: 40px;
+  border: 4px solid #1e5a99;
+  border-top-color: #4fa8ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 1rem; /* If you have text next to it */
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
